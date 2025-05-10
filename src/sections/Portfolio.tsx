@@ -19,56 +19,56 @@ export const Portfolio: React.FC = () => {
       title: 'Slay Nights S1',
       category: 'branding',
       description: 'Created all visual branding assets and ran strategic promotions to attract and engage a larger student audience across the globe.',
-      image: 'public/images/slay.png'
+      image: '/images/slay.png'
     },
     {
       id: 2,
       title: 'Tech Blitz',
       category: 'poster',
       description: 'Handled digital branding including posters, social media, and coordinated promotions that boosted engagement.',
-      image: 'public/images/tech_blitz.webp'
+      image: '/images/tech_blitz.webp'
     },
     {
       id: 3,
       title: 'Creators Forge',
       category: 'branding',
       description: 'Designed the official logo and brand identity for Creators Forge, a platform built to support and grow content creators.',
-      image: 'public/images/Forge.png'
+      image: '/images/Forge.png'
     },
     {
       id: 4,
       title: 'Kiwi_fps Youtube Thumbnail',
       category: 'branding',
       description: 'Designed an eye-catching thumbnail that helped the stream gain traction, contributing to 3.5K views before the live ended.',
-      image: 'public/images/thumbnail.jpeg'
+      image: '/images/thumbnail.jpeg'
     },
     {
       id: 5,
       title: 'Speakup Showdown - Debate Competition',
       category: 'social',
       description: 'Conceptualized and hosted the event, managed speaker schedules, and ensured smooth transitions during live debates with real-time moderation.',
-      image: 'public/images/speakup.heic'
+      image: '/images/speakup.heic'
     },
     {
       id: 6,
       title: 'Code Carvan 2.0 Ft. Lobe Babbar & Lakshay Sharma',
       category: 'poster',
       description: 'Organized and promoted the hackathon, created the registration flow and ensured technical support for over 1000+ participants.',
-      image: 'public/images/code_carvan.webp'
+      image: '/images/code_carvan.webp'
     },
     {
       id: 7,
       title: 'NonStop Narula Ft. Pritish Narula',
       category: 'poster',
       description: 'Coordinated with the artists management, assisted in technical stage setup, and supervised crowd control for an uninterrupted evening filled with laughter and joy.',
-      image: 'public/images/nonstop.webp'
+      image: '/images/nonstop.webp'
     },
     {
       id: 8,
       title: 'Hope Harvest',
       category: 'social',
       description: 'Handled event logistics, managed volunteer teams, and ensured timely stage transitions, helping the charity fundraiser run seamlessly.',
-      image: 'public/images/hope.webp'
+      image: '/images/hope.webp'
     }
     ,
     {
@@ -76,7 +76,7 @@ export const Portfolio: React.FC = () => {
       title: 'Sunburn Campus',
       category: 'social',
       description: 'Contributed to on-ground execution and crowd management, ensuring smooth artist entry, audience flow, and stage coordination.',
-      image: 'public/images/Sunburn.webp'
+      image: '/images/Sunburn.webp'
     }
   ];
 

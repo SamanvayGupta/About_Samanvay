@@ -40,7 +40,7 @@ export const About: React.FC = () => {
             <div className="relative">
               
               <img 
-                src="public/images/2.png" 
+                src="/images/2.png" 
                 alt="Samanvay working" 
                 className="rounded-lg w-4/5 top-20 left-20 object-cover shadow-[0_0_30px_#5271FF] relative z-10"
               />
