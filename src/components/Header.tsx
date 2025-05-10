@@ -65,7 +65,7 @@ export const Header: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-slate-800 focus:outline-none"
+            className="md:hidden p-2 text-white focus:outline-none"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -81,7 +81,7 @@ export const Header: React.FC = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="font-medium text-slate-800 hover:text-purple-600 transition-colors"
+                className="font-medium text-white hover:text-blue-600 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.name}
