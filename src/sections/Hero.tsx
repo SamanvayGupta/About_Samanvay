@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
+import { Typewriter } from 'react-simple-typewriter';
 
 export const Hero: React.FC = () => {
   return (
@@ -13,19 +14,32 @@ export const Hero: React.FC = () => {
         ></div>
       </div>
 
-      <div className="container-custom relative z-10 w-full px-4">
-        <div className="flex flex-col md:flex-row items-center">
+      <div className="relative z-10 w-full px-4 max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-10">
           {/* Text Content */}
           <div className="md:w-1/2 text-center md:text-left mb-10 md:mb-0 max-w-lg mx-auto md:mx-0">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               <span className="inline-block text-white">Hi, I'm </span>
               <span className="inline-block text-blue-600">Samanvay Gupta</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white mb-8">
-              I'm a designer passionate about streetwear, youth culture, and visual storytelling.
+            <p className="text-xl md:text-2xl text-white mb-8 h-10">
+              <Typewriter
+                words={[
+                  'Tech enthusiast 🚀',
+                  'Creative designer 🎨',
+                  'Code meets culture 💡',
+                  'Visual storyteller 📸',
+                ]}
+                loop={0}
+                cursor
+                cursorStyle="_"
+                typeSpeed={60}
+                deleteSpeed={40}
+                delaySpeed={2000}
+              />
             </p>
             <h2 className="text-2xl md:text-3xl font-bold text-blue-600 mb-8">
-              Designs that speak louder than trends.
+              Designs that connect, code that speaks.
             </h2>
             <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
               <a href="#portfolio" className="btn btn-primary">
@@ -38,8 +52,8 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* Image */}
-          <div className="md:w-1/2 flex justify-center">
-            <div className="relative w-64 h-64 rounded-full overflow-hidden shadow-3xl transform transition-transform hover:scale-[1.03] shadow-[0_0_30px_#5271FF]">
+          <div className="md:w-1/2 flex justify-center md:justify-end relative">
+            <div className="relative w-80 h-80 sm:w-96 sm:h-96 rounded-full overflow-hidden shadow-3xl transform transition-transform hover:scale-[1.03] shadow-[0_0_30px_#5271FF] md:-translate-y-2 md:-translate-x-8">
               <img
                 src="/images/me.png"
                 alt="Samanvay Gupta"
@@ -50,8 +64,8 @@ export const Hero: React.FC = () => {
         </div>
 
         {/* Scroll Down Icon */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <a href="#about" className="text-slate-700 hover:text-blue-600 transition-colors shadow-[0_0_30px_#5271FF]">
+        <div className="w-full flex justify-center mt-10 md:mt-16">
+          <a href="#about" className="animate-bounce text-slate-700 hover:text-blue-600 transition-colors">
             <ChevronDown size={52} />
           </a>
         </div>

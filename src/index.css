@@ -42,7 +42,7 @@
   }
   
   .btn-outline {
-    @apply border-2 border-blue-600 text-white hover:bg-purple-600 hover:text-white focus:ring-4 focus:ring-purple-500/20;
+    @apply border-2 border-blue-600 text-white hover:bg-blue-600 hover:text-white focus:ring-4 focus:ring-blue-500/20;
   }
 
   .section {

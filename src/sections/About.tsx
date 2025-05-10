@@ -3,19 +3,23 @@ import {
   Palette,
   Code,
   PenTool,
-  TrendingUp,
-  Monitor,
-  Award
+  Brain,
+  Ticket,
+  Award,
+  Target,
+  Eye
 } from 'lucide-react';
 
 export const About: React.FC = () => {
   const skills = [
+    { icon: <Target size={24} />, name: 'Branding', description: 'Cohesive identity systems for startups and events' },
     { icon: <Palette size={24} />, name: 'Canva', description: 'Expert in creating dynamic visual content' },
     { icon: <PenTool size={24} />, name: 'Photoshop', description: 'Advanced image manipulation and design' },
-    { icon: <TrendingUp size={24} />, name: 'Branding', description: 'Creating cohesive brand identities' },
-    { icon: <Monitor size={24} />, name: 'Social Media', description: 'Engaging content for digital platforms' },
-    { icon: <Code size={24} />, name: 'Tech', description: 'B.Tech CSE student with technical knowledge' },
-    { icon: <Award size={24} />, name: 'Leadership', description: 'Graphic Design Head at CodingBlocks LPU' },
+    { icon: <Brain size={24} />, name: 'Machine Learning', description: 'Developing intelligent systems and models using Python and OpenCV to solve real-world problems.' },
+    { icon: <Code size={24} />, name: 'Tech', description: 'Skilled in HTML, CSS, JS, Flask, and React for building interactive and user-friendly web experiences.' },
+    { icon: <Award size={24} />, name: 'Leadership', description: 'Guided multi-disciplinary teams as CEO of CodingBlocks LPU and Admin Head at VRC Grands, driving strategy and growth.' },
+    { icon: <Ticket size={24} />, name: 'Event Management', description: 'Led the planning and execution of large-scale events like Mirage 24 and Code-A-Haunt with thousands of participants.' },
+    { icon: <Eye size={24} />, name: 'Visual Storytelling', description: 'Transforming complex ideas into impactful visuals that engage audiences and communicate messages with clarity and emotion.' }
   ];
 
   return (
@@ -47,10 +51,10 @@ export const About: React.FC = () => {
           <div>
             <h3 className="text-2xl font-bold mb-4 text-blue-600">My Journey</h3>
             <p className="text-white mb-6 leading-relaxed">
-              I'm a B.Tech CSE student with a passion for graphic design. Currently serving as the Graphic Design Head at CodingBlocks LPU, I've honed my skills through both academic pursuits and practical experience as a freelance designer.
+              I'm a B.Tech student in Computer Science & Engineering, specializing in Machine Learning at Lovely Professional University. With a deep-rooted passion for graphic design and storytelling, I currently serve as a Graphic Design Intern at InovateEx, having previously held the position of Graphic Design Head and CEO at CodingBlocks LPU.
             </p>
             <p className="text-white mb-8 leading-relaxed">
-              My design philosophy centers around creating visuals that resonate with youth culture and contemporary trends while maintaining a timeless appeal. I believe in the power of visual storytelling to connect brands with their audiences in meaningful ways.
+              Over the years, I’ve merged design with leadership—executing high-impact branding for startups, scaling student-led organizations, and leading large-scale technical and cultural events. My approach blends youth-centric creativity with brand strategy and timeless visual appeal.
             </p>
 
             <h3 className="text-2xl font-bold mb-4 text-blue-600">My Skills</h3>
