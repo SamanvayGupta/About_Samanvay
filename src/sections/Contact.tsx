@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { supabase } from '../components/supabaseClient';
@@ -36,18 +38,16 @@ export const Contact: React.FC = () => {
     if (error) {
       console.error('Supabase error:', error.message);
       setAlert({ type: 'error', message: 'Something went wrong. Please try again.' });
-      return;
+    } else {
+      setAlert({ type: 'success', message: 'Thank you for your message! I will get back to you soon.' });
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
+      });
     }
-
-    setAlert({ type: 'success', message: 'Thank you for your message! I will get back to you soon.' });
-
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
-    });
 
     // Auto-dismiss alert after 4 seconds
     setTimeout(() => setAlert(null), 4000);
@@ -57,24 +57,18 @@ export const Contact: React.FC = () => {
     <section id="contact" className="section bg-black relative">
       <div className="absolute inset-0 scale-y-[-1] bg-gradient-to-br from-blue-500/10 to-blue-600/10 z-[1] pointer-events-none">
         <div className="absolute top-20 right-10 w-72 h-72 bg-blue-500/20 rounded-full filter blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full filter blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+        <div
+          className="absolute bottom-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full filter blur-3xl animate-float"
+          style={{ animationDelay: '2s' }}
+        ></div>
       </div>
 
       <div className="container-custom relative z-10">
         <h3 className="section-subtitle text-blue-600">Get In Touch</h3>
         <h2 className="section-title text-white">Contact Me</h2>
 
-        {alert && (
-          <div
-            className={`my-6 px-6 py-4 rounded-xl transition-all duration-500 ${
-              alert.type === 'success'
-                ? 'bg-blue-600 text-white'
-                : 'bg-black text-white border border-white'
-            }`}
-          >
-            {alert.message}
-          </div>
-        )}
+        
+
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
           <div>
@@ -121,11 +115,26 @@ export const Contact: React.FC = () => {
               </div>
             </div>
           </div>
+          {/* Alert Box */}
+        {alert && (
+          <div
+          className={`top-10 left-1/2 -translate-x-1/2 z-50 px-6 py-4 rounded-xl shadow-xl transition-all duration-10000 animate-bounce ${
+            alert.type === 'success'
+              ? 'bg-green-600 text-white'
+              : 'bg-red-600 text-white'
+          }`}
+        >
+          {alert.message}
+        </div>
+
+        )}
 
           <div className="shadow-[0_0_30px_#5271FF]">
             <form onSubmit={handleSubmit} className="bg-blue-100 p-6 rounded-xl shadow-lg">
               <div className="mb-4">
-                <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">Name</label>
+                <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">
+                  Name
+                </label>
                 <input
                   type="text"
                   id="name"
@@ -138,7 +147,9 @@ export const Contact: React.FC = () => {
               </div>
 
               <div className="mb-4">
-                <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">Email</label>
+                <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">
+                  Email
+                </label>
                 <input
                   type="email"
                   id="email"
@@ -151,7 +162,9 @@ export const Contact: React.FC = () => {
               </div>
 
               <div className="mb-4">
-                <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-1">Phone Number</label>
+                <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-1">
+                  Phone Number
+                </label>
                 <input
                   type="tel"
                   id="phone"
@@ -165,7 +178,9 @@ export const Contact: React.FC = () => {
               </div>
 
               <div className="mb-4">
-                <label htmlFor="subject" className="block text-sm font-medium text-slate-700 mb-1">Subject</label>
+                <label htmlFor="subject" className="block text-sm font-medium text-slate-700 mb-1">
+                  Subject
+                </label>
                 <input
                   type="text"
                   id="subject"
@@ -178,7 +193,9 @@ export const Contact: React.FC = () => {
               </div>
 
               <div className="mb-6">
-                <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1">Message</label>
+                <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1">
+                  Message
+                </label>
                 <textarea
                   id="message"
                   name="message"
