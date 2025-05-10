@@ -11,7 +11,11 @@ export const Contact: React.FC = () => {
     message: ''
   });
 
-  // Handle input change
+  const [alert, setAlert] = useState<{
+    type: 'success' | 'error';
+    message: string;
+  } | null>(null);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -21,31 +25,33 @@ export const Contact: React.FC = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const { name, email, phone, subject, message } = formData;
+    const { name, email, phone, subject, message } = formData;
 
-  const { error } = await supabase
-    .from('contacts')
-    .insert([{ name, email, phone, subject, message }]);
+    const { error } = await supabase
+      .from('contacts')
+      .insert([{ name, email, phone, subject, message }]);
 
-  if (error) {
-    console.error('Supabase error:', error.message);
-    alert('Something went wrong. Please try again.');
-    return;
-  }
+    if (error) {
+      console.error('Supabase error:', error.message);
+      setAlert({ type: 'error', message: 'Something went wrong. Please try again.' });
+      return;
+    }
 
-  alert('Thank you for your message! I will get back to you soon.');
+    setAlert({ type: 'success', message: 'Thank you for your message! I will get back to you soon.' });
 
-  setFormData({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
-  });
-};
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: ''
+    });
 
+    // Auto-dismiss alert after 4 seconds
+    setTimeout(() => setAlert(null), 4000);
+  };
 
   return (
     <section id="contact" className="section bg-black relative">
@@ -54,16 +60,28 @@ export const Contact: React.FC = () => {
         <div className="absolute bottom-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full filter blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="container-custom">
-        <h3 className="section-subtitle text-blue-600 relative z-10">Get In Touch</h3>
-        <h2 className="section-title text-white relative z-10">Contact Me</h2>
+      <div className="container-custom relative z-10">
+        <h3 className="section-subtitle text-blue-600">Get In Touch</h3>
+        <h2 className="section-title text-white">Contact Me</h2>
+
+        {alert && (
+          <div
+            className={`my-6 px-6 py-4 rounded-xl transition-all duration-500 ${
+              alert.type === 'success'
+                ? 'bg-blue-600 text-white'
+                : 'bg-black text-white border border-white'
+            }`}
+          >
+            {alert.message}
+          </div>
+        )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
           <div>
-            <h3 className="text-2xl font-bold mb-6 text-blue-600 relative z-10">Let's Talk</h3>
-            <p className="text-white mb-8 relative z-10">
-              Have a project in mind or want to discuss a potential collaboration?
-              Feel free to reach out through the form or directly via email or social media.
+            <h3 className="text-2xl font-bold mb-6 text-blue-600">Let's Talk</h3>
+            <p className="text-white mb-8">
+              Have a project in mind or want to discuss a potential collaboration? Feel free to reach
+              out through the form or directly via email or social media.
             </p>
 
             <div className="space-y-6">
@@ -72,8 +90,11 @@ export const Contact: React.FC = () => {
                   <Mail size={24} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-white relative z-10">Email</h4>
-                  <a href="mailto:samanvaypgupta@gmail.com" className="text-slate-400 hover:text-blue-600 transition-colors relative z-10">
+                  <h4 className="font-bold text-white">Email</h4>
+                  <a
+                    href="mailto:samanvaypgupta@gmail.com"
+                    className="text-slate-400 hover:text-blue-600 transition-colors"
+                  >
                     samanvaypgupta@gmail.com
                   </a>
                 </div>
@@ -84,25 +105,25 @@ export const Contact: React.FC = () => {
                   <Phone size={24} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-white relative z-10">Phone</h4>
-                  <p className="text-slate-400 relative z-10">+91 8899273523</p>
+                  <h4 className="font-bold text-white">Phone</h4>
+                  <p className="text-slate-400">+91 8899273523</p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="bg-blue-100 p-3 rounded-lg text-blue-600 relative z-10">
+                <div className="bg-blue-100 p-3 rounded-lg text-blue-600">
                   <MapPin size={24} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-white relative z-10">Location</h4>
-                  <p className="text-slate-400 relative z-10">Punjab, India</p>
+                  <h4 className="font-bold text-white">Location</h4>
+                  <p className="text-slate-400">Punjab, India</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="shadow-[0_0_30px_#5271FF]">
-            <form onSubmit={handleSubmit} className="bg-blue-100 p-6 rounded-xl shadow-lg relative z-10">
+            <form onSubmit={handleSubmit} className="bg-blue-100 p-6 rounded-xl shadow-lg">
               <div className="mb-4">
                 <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">Name</label>
                 <input
@@ -111,7 +132,7 @@ export const Contact: React.FC = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
               </div>
@@ -124,7 +145,7 @@ export const Contact: React.FC = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
               </div>
@@ -137,7 +158,7 @@ export const Contact: React.FC = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
                 <p className="text-xs text-slate-500 mt-1">Include your country code (e.g. +91 for India)</p>
@@ -151,7 +172,7 @@ export const Contact: React.FC = () => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
               </div>
@@ -164,7 +185,7 @@ export const Contact: React.FC = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows={5}
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 ></textarea>
               </div>
