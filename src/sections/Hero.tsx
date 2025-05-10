@@ -35,7 +35,7 @@ export const Hero: React.FC = () => {
           <div className="md:w-1/3">
             <div className="relative rounded-full overflow-hidden left-32 shadow-3xl transform transition-transform hover:scale-[1.03] shadow-[0_0_30px_#5271FF]">
               <img 
-                src="src/me.png" 
+                src="public/images/me.png" 
                 alt="Samanvay Gupta" 
                 className="w-full h-auto object-cover"
               />
