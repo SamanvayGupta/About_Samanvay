@@ -13,6 +13,7 @@ export const Hero: React.FC = () => {
           style={{ animationDelay: '2s' }}
         ></div>
       </div>
+      
 
       <div className="relative z-10 w-full px-4 max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-10">
